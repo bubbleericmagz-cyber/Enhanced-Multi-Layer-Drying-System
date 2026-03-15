@@ -1,0 +1,14 @@
+{
+  "name": "smartbilao-landing",
+  "version": "1.0.0",
+  "description": "Static landing page for the SmartBilao ergonomic multi-layer drying system prototype.",
+  "private": true,
+  "scripts": {
+    "start": "serve .",
+    "dev": "serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
+
