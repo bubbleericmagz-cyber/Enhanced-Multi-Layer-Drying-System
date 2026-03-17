@@ -20,7 +20,11 @@
   <body>
     <header class="site-header">
       <div class="container header-inner">
-        <nav class="nav">
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+        </button>
+        <nav class="nav" id="site-nav">
           <a href="#top">Home</a>
           <a href="#problem">Problem</a>
           <a href="#solution">Solution</a>
@@ -427,6 +431,24 @@
     </footer>
     <script>
       (function () {
+        // Mobile nav toggle
+        var navToggle = document.querySelector(".nav-toggle");
+        var nav = document.getElementById("site-nav");
+        if (navToggle && nav) {
+          navToggle.addEventListener("click", function () {
+            var isOpen = nav.classList.toggle("is-open");
+            navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+          });
+          nav.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+              if (nav.classList.contains("is-open")) {
+                nav.classList.remove("is-open");
+                navToggle.setAttribute("aria-expanded", "false");
+              }
+            });
+          });
+        }
+
         const track = document.getElementById("carousel-track");
         if (!track) return;
         const slides = Array.from(track.children);
